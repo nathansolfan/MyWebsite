@@ -52,6 +52,15 @@ if(isset($_POST['submit'])){
         }    
     }
 
+    // check if there are errors
+    // if there are no errors, will return false and with method header('location: index.php') will send the user back to main page
+
+    if(array_filter($errors)){
+        echo "there are errors in the form";
+    }else{
+        echo"form is valid";
+        header('location: index.php');
+    };
 }
 // thi is the end of the POST
 
