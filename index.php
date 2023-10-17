@@ -23,6 +23,7 @@ $result = mysqli_query($connection, $sql);
 // fetch the rows as an array
 
 $pizzas = mysqli_fetch_all($result, MYSQLI_ASSOC);
+echo $pizzas;
 
 // clear the results
 mysqli_free_result($result);
@@ -30,10 +31,14 @@ mysqli_free_result($result);
 // close connection
 
 mysqli_close($connection);
+// now that we display the data we can comment this code underneath
+// print_r($pizzas)
 
-print_r($pizzas)
 
-
+// explode function
+// to split into an array, 2nd arguement is the string
+// we output $pizza['ingredients'] at the bottom
+    // print_r(explode(',',$pizzas [0]['ingredients']));
 
 ?>
 <!DOCTYPE html>
@@ -53,8 +58,12 @@ include('templates/header.php');
         <div class="card-content center">
             <h6> <?php echo htmlspecialchars($pizza['title'])?></h6>
             <div> <?php echo htmlspecialchars($pizza['ingredients']) ?> </div>
+            <ul> <?php foreach(explode(',', $pizza['ingredients']) as $ing) { ?>
+                <li> <?php echo htmlspecialchars($ing); ?></li>
+                <?php } ?>            
+            </ul>
         </div>
-        <div class="card-action right align">
+        <div class="card-action right align"> 
             <a href="#" class="brand-text">More Info</a>
         </div>
     </div>

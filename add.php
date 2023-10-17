@@ -9,6 +9,7 @@
 $title = $email = $ingredients = "";
 // we create an variable errors as an array, set it as a empty value to start with and it will take the 3 inputs for the error
 // and ASSOCIATE the variable names to the echo
+// array synxtas in PHP = array('name' => 'string' , 'secondname' => 'string', etc)
 $errors = array('email'=>'', 'title'=>'', 'ingredients'=>'');
 
 if(isset($_POST['submit'])){
