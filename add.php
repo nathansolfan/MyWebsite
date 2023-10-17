@@ -1,5 +1,7 @@
 <?php
 
+include('config/db_connect.php');
+
 // (isset)
 // if(isset($_GET['submit'])){
 //      echo $_GET['email'];
@@ -59,8 +61,30 @@ if(isset($_POST['submit'])){
     if(array_filter($errors)){
         echo "there are errors in the form";
     }else{
-        echo"form is valid";
-        header('location: index.php');
+        // header('location: index.php' we just redirect user to main page)
+        // echo"form is valid";
+        $email = mysqli_real_escape_string($connection, $_POST['email']);
+        $title = mysqli_real_escape_string($connection, $_POST['title']);
+        $ingredients = mysqli_real_escape_string($connection, $_POST['ingredients']);
+        
+
+        // create sql
+        // we INSERT INTO the pizzas row we created, and the following rows title, email, ingre
+        // then the VALUES will be the variables we have
+        // the other 2 we dont need to worry is the timeCreated and the ID 
+        $sql = "INSERT INTO pizzas(title, email, ingredients) VALUES('$email', '$title', '$ingredients')";
+
+        // save to Database and check
+        // mysqli_query takes the 2 variables, connection which is the database 
+        // and $sql which is the values
+        // and once it is saved we send it to index
+        if(mysqli_query($connection, $sql)){
+            // succes
+            header('location: index.php');
+        } else{
+            // error
+            echo "query - consulta error " . mysqli_error($connection);
+        }
     };
 }
 // thi is the end of the POST

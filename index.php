@@ -1,14 +1,7 @@
 <?php
 
 // MYSQLI or PDO use 2nd as i get mroe advanced
-
-// connect to the database - takes 4 parameters
-$connection = mysqli_connect('localhost', 'nathan', 'test1234', 'pizza_nathan');
-
-// check if connection works, with ! it`ll echo when it fails
-if(!$connection){
-    echo 'connection error:' . mysqli_connect_error();
-}
+include('config/db_connect.php');
 
 // write query for all pizzas
 // pizza_nathan is the databse - 
@@ -17,7 +10,7 @@ $sql = 'SELECT title, ingredients, id FROM pizzas';
 
 // make query and get results
 // takes 2 parameters, basically the database and then what we want from it
-
+// query = consulta
 $result = mysqli_query($connection, $sql);
 
 // fetch the rows as an array
