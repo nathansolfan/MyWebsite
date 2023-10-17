@@ -51,7 +51,8 @@ include('templates/header.php');
 <h4 class="center grey-text">Pizzas:</h4>
 <div class="container">
     <div class="row">
-        <?php foreach($pizzas as $pizza) { ?>
+        <!-- we replace the { with : and at the end with endforeach -->
+        <?php foreach($pizzas as $pizza) : ?>
 
 <div class="col s6 md3">
     <div class="card z-depth-0">
@@ -68,7 +69,16 @@ include('templates/header.php');
         </div>
     </div>
 </div>
-<?php } ?>
+<?php endforeach; ?>
+
+<!-- thats the example for above, where we can take the { and add : -->
+<!-- for example : , : , endif  -->
+<?php if(count($pizzas) >= 2) : ?>
+<p>There are 2 or more pizzas</p>
+<?php  else: ?>
+<p>There are less than 2 pizzas</p>
+<?php endif  ?>    
+    
 </div>
 </div>
 
