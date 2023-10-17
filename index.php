@@ -1,5 +1,13 @@
 <?php
 
+
+$conn = mysqli_connect('localhost', 'nathan', 'test1234', 'pizza_nathan');
+
+if(!$conn){
+    echo 'connection error:' . mysqli_connect_error();
+
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
