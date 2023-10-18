@@ -1,5 +1,6 @@
 <?php
 
+// GET REQUEST is sent to the URL
 // MYSQLI or PDO use 2nd as i get mroe advanced
 include('config/db_connect.php');
 
@@ -16,7 +17,7 @@ $result = mysqli_query($connection, $sql);
 // fetch the rows as an array
 
 $pizzas = mysqli_fetch_all($result, MYSQLI_ASSOC);
-echo $pizzas;
+
 
 // clear the results
 mysqli_free_result($result);
@@ -57,8 +58,11 @@ include('templates/header.php');
                 <?php } ?>            
             </ul>
         </div>
-        <div class="card-action right align"> 
-            <a href="#" class="brand-text">More Info</a>
+        <div class="card-action right align">
+            <!-- we go to details.php and dipends on the pizza we send a individual pizza -->
+            <!-- using query string ?id= -->
+            <!-- we open a php tag and use the foreach single $pizza and get its ID['id'] -->
+            <a class="brand-text" href="details.php?id=<?php echo $pizza['id'] ?>" >More Info</a>
         </div>
     </div>
 </div>
