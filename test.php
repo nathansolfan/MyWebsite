@@ -56,4 +56,19 @@ echo 'is this ok?';
 
 include('content.php');
 
+
+// if statement 
+$score = 50;
+if($score > 30){
+    echo "Score is greater than 30";
+}
+else 
+{
+    echo "Score is less than 30";
+}
+// ternary operators - takes less lines of code and looks neater
+$score = 20;
+echo $score > 30 ? "Yeah" : "Nope";
+
 ?>
+

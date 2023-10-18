@@ -1,16 +1,10 @@
 <?php 
-// if statement 
-$score = 50;
-if($score > 30){
-    echo "Score is greater than 30";
-}
-else 
-{
-    echo "Score is less than 30";
-}
-// ternary operators - takes less lines of code and looks neater
-$score = 20;
-echo $score > 30 ? "Yeah" : "Nope";
+// SUPERGLOBALS
+// We have used 2 so far, $_GET[] and $_POST[]
+echo $_SERVER['SERVER_NAME'] . '<br />';
+echo $_SERVER['REQUEST_ME THOD'] . '<br />';
+echo $_SERVER['SCRIPT_FILENAME'] . '<br />';
+echo $_SERVER['PHP_SELF'] . '<br />';
 
 ?>
 
