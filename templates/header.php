@@ -11,8 +11,9 @@ if($_SERVER['QUERY_STRING'] == 'noname'){
 // we get an error on the following $name
 }
 // we grab the S_SESSION superglobal and put it in the $name variable
-$name = $_SESSION['name']
-
+$name = $_SESSION['name'] ?? "Guest";
+// create cookie
+$gender = $_COOKIE['gender'] ?? "Unknown";
 ?>
 
 <head>
@@ -40,6 +41,7 @@ $name = $_SESSION['name']
         <ul id="nav-mobile" class="right hide-on-small-and-down">
             <!-- we display the $name variable underneath -->
             <li class="grey text">Hello, <?php echo htmlspecialchars($name) ?></li>
+            <li class="grey text"> (<?php echo htmlspecialchars($gender)?>) </li>
             <li><a href="add.php" class="btn brand-text z-depth-0">Add a pizza</a></li>
         </ul>
     </div>
