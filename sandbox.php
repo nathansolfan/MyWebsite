@@ -1,10 +1,13 @@
 <?php 
-// SUPERGLOBALS
-// We have used 2 so far, $_GET[] and $_POST[]
-echo $_SERVER['SERVER_NAME'] . '<br />';
-echo $_SERVER['REQUEST_ME THOD'] . '<br />';
-echo $_SERVER['SCRIPT_FILENAME'] . '<br />';
-echo $_SERVER['PHP_SELF'] . '<br />';
+// session 
+// we check if the user has submitted the form with if(isset)
+if(isset($_POST['submit'])){
+    // we have to call it before anything else
+    session_start();
+    // get the S_SESSION superglobal, different variable, equal to the $_Post superglobal
+    $_SESSION['name'] = $_POST['name'];
+    echo $_SESSION['name'];
+}
 
 ?>
 
@@ -17,7 +20,9 @@ echo $_SERVER['PHP_SELF'] . '<br />';
 </head>
 <body>
 
-<h1><?php echo $score > 30 ? "Yeah" : "Nope"; ?></h1>
-    
+<form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST">
+    <input type="" name="name">
+    <input type="submit" name="submit" value="submit">
+</form>    
 </body>
 </html>
