@@ -6,8 +6,8 @@
 class User {
     // define properties or functions
     // what type, public or private, public means we can change it outside
-    public $name;
-    public $email;
+    private $name;
+    private $email;
 
 // to set up the properties, is a special function __construct and it can set up initial values
     public function __construct($name, $email){
@@ -27,6 +27,27 @@ class User {
         echo $this->email;
         echo 'User has done the login ';
     }
+// GETTERS AND SETTERS
+// function to get name
+    public function getName(){
+        // we have access to $this object and we grab the name 
+        return $this->name;
+    }
+
+// function to set name - SETTER
+
+public function setName($name){
+    // we have a basic validiation, if string and length > 1
+    if(is_string($name) ?? strlen($name) > 1){
+        // access name inside class with $this->name
+        $this->name = $name;
+        return "name has been updated to $name";
+    } else {
+        return "name is not valid";
+    }
+}
+
+    // 3-4min video 42
 }
 
 // we create a object based on the User class, new Keyword and invoke () the User
@@ -41,9 +62,21 @@ class User {
 // now with different users, we can set the initial values
 // on this step we give 2 parameters to the constructor and name them here
 $userTwo = new User('Yoshi','yoshi@gmail.com');
-echo $userTwo->name;
-echo $userTwo->email;
-$userTwo->login()
+// we can overwrite the name var, no validation
+
+// // since we changed to private, it fails
+// $userTwo->name = 'Mario';
+// echo $userTwo->name;
+// echo $userTwo->email;
+
+// this works
+// $userTwo->login()
+
+
+// we comment it out and the other step to echo the name:
+// to do so we do $userTwo-> then the function getName()
+echo $userTwo->getName();
+echo $userTwo->setName(50);
 
 
 ?>
